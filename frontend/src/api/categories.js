@@ -1,13 +1,14 @@
 'use strict';
+import {U} from '../common/u.js';
+
 export class Categories {
+    static default = {_id: 'unknown', name: 'unknown'}
+
     static async getAll() {
-        return [
-            {id: '0', name: 'Appetizers'},
-            {id: '1', name: 'First Dishes'},
-            {id: '2', name: 'Second Dishes'},
-            {id: '3', name: 'Side Dishes'},
-            {id: '4', name: 'Leavened'},
-            {id: '5', name: 'Sweets'}
-        ];
+        try {
+            const categories = await fetch(`${U.backendUrl()}/categories`, {method: 'GET'});
+            return await categories.json();
+        } catch(e) {return [];}
+
     }
 }

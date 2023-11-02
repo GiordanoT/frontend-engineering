@@ -6,7 +6,7 @@ import {Categories} from '../api/categories.js';
     const father = document.querySelector('#categories');
     for(let category of categories) {
         const child = `<li>
-            <a href='?category=${category.id}'>${category.name}</a>
+            <a href='?category=${category._id}'>${category.name}</a>
         </li>`;
         father.insertAdjacentHTML('beforeend', child);
     }

@@ -1,5 +1,6 @@
 'use strict';
 import {U} from '../common/u.js';
+import {Users} from '../api/users.js';
 
 export class Views {
     static logo = {name: 'Logo', url: '../../static/img/logo.png'};
@@ -114,29 +115,30 @@ export class Views {
         </section>`;
     }
     static async recipeCardHome(recipe) {
-        const iconId = `favorite-icon-${recipe.id}`;
+        const iconId = `favorite-icon-${recipe._id}`;
+        const author = await Users.getById(recipe.author);
         return `<div class='col-lg-3 col-md-4 col-sm-6 mix'>
             <div class='featured__item'>
-                <div class='featured__item__pic set-bg' data-setbg='${recipe.image}'>
+                <div class='featured__item__pic set-bg' style='background-image: url(${recipe.image});'>
                     <ul class='featured__item__pic__hover'>
-                        <li><a href='${this.recipe.url}?recipe=${recipe.id}'><i class='fa fa-info'></i></a></li>
+                        <li><a href='${this.recipe.url}?recipe=${recipe._id}'><i class='fa fa-info'></i></a></li>
                         <li><a id='${iconId}' href='${this.home.url}'><i class='fa fa-heart'></i></a></li>
                     </ul>
                 </div>
                 <div class='featured__item__text'>
-                    <h5>${recipe.author}</h5>
-                    <h6>${recipe.name}</h6>
+                    <h5 style='text-overflow: ellipsis;overflow: hidden;'>${recipe.name}</h5>
+                    <h6 style='text-overflow: ellipsis;overflow: hidden;'>${author.username}</h6>
                 </div>
             </div>
         </div>`;
     }
     static async recipeCardFavorite(recipe) {
-        const iconId = `remove-favorite-icon-${recipe.id}`;
+        const iconId = `remove-favorite-icon-${recipe._id}`;
         return `<div class='col-lg-3 col-md-4 col-sm-6 mix'>
             <div class='featured__item'>
                 <div class='featured__item__pic set-bg' data-setbg='${recipe.image}'>
                     <ul class='featured__item__pic__hover'>
-                        <li><a href='${this.recipe.url}?recipe=${recipe.id}'><i class='fa fa-info'></i></a></li>
+                        <li><a href='${this.recipe.url}?recipe=${recipe._id}'><i class='fa fa-info'></i></a></li>
                         <li><a id='${iconId}' href='${this.favoriteRecipes.url}'><i class='fa fa-remove'></i></a></li>
                     </ul>
                 </div>
@@ -148,13 +150,13 @@ export class Views {
         </div>`;
     }
     static async recipeCardPublished(recipe) {
-        const editIconId = `edit-recipe-icon-${recipe.id}`;
-        const deleteIconId = `delete-recipe-icon-${recipe.id}`;
+        const editIconId = `edit-recipe-icon-${recipe._id}`;
+        const deleteIconId = `delete-recipe-icon-${recipe._id}`;
         return `<div class='col-lg-3 col-md-4 col-sm-6 mix'>
             <div class='featured__item'>
                 <div class='featured__item__pic set-bg' data-setbg='${recipe.image}'>
                     <ul class='featured__item__pic__hover'>
-                        <li><a href='${this.recipe.url}?recipe=${recipe.id}'><i class='fa fa-info'></i></a></li>
+                        <li><a href='${this.recipe.url}?recipe=${recipe._id}'><i class='fa fa-info'></i></a></li>
                         <li><a id='${editIconId}' href='${this.myRecipes.url}'><i class='fa fa-edit'></i></a></li>
                         <li><a id='${deleteIconId}' href='${this.myRecipes.url}'><i class='fa fa-trash'></i></a></li>
                     </ul>

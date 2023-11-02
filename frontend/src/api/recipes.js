@@ -1,17 +1,33 @@
 'use strict';
+import {U} from '../common/u.js';
+
 export class Recipes {
-    static recipes = [
-        {id: '1', name: 'Hamburger 1', author: 'Mario Rossi', image: '../../static/img/product.jpg', category: '1'},
-        {id: '2', name: 'Hamburger 2', author: 'Mario Rossi', image: '../../static/img/product.jpg', category: '0'},
-        {id: '3', name: 'Hamburger 3', author: 'Mario Rossi', image: '../../static/img/product.jpg', category: '1'}
-    ];
+    static default = {_id: 'unknown', name: 'unknown', author: 'unknown', category: 'unknown',
+        ingredients: 'unknown', description: 'unknown', image: 'unknown'};
+
     static async getAll() {
-        return this.recipes;
+        try {
+            const method = 'GET';
+            const recipes = await fetch(`${U.backendUrl()}/recipes`, {method});
+            return await recipes.json();
+        } catch (e) {return [];}
+
     }
     static async getByCategory(category) {
-        return this.recipes.filter(recipe => recipe.category === category);
+        try {
+            const method = 'GET';
+            const recipes = await fetch(`${U.backendUrl()}/categories/${category}/recipes`, {method});
+            return await recipes.json();
+        } catch (e) {return this.default;}
+
     }
     static async getByName(name) {
-        return this.recipes.filter(recipe => recipe.name.toLowerCase().includes(name.toLowerCase()));
+        try {
+            const method = 'POST';
+            const headers = {'Content-type': 'application/json; charset=UTF-8'};
+            const body = JSON.stringify({search: name});
+            const recipes = await fetch(`${U.backendUrl()}/recipes/search`, {method, headers, body});
+            return await recipes.json();
+        } catch (e) {return [];}
     }
 }
