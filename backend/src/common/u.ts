@@ -11,6 +11,9 @@ class U {
     static getToken(req: Request): string {
         return req.cookies['AUTH-TOKEN'] || '';
     }
+    static isId(id: string): boolean {
+        return !!(id.match(/^[0-9a-fA-F]{24}$/));
+    }
 }
 
 export default U;

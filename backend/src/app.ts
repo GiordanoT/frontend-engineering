@@ -7,7 +7,10 @@ import http from 'http';
 import mongoose from 'mongoose';
 import {
     AuthRouter,
-    UsersRouter
+    UsersRouter,
+    CategoriesRouter,
+    RecipesRouter,
+    FavoritesRouter
 } from './routes';
 
 const app = express();
@@ -33,3 +36,7 @@ server.listen(5002);
 const root = 'backend';
 app.use(`/${root}/auth`, AuthRouter);
 app.use(`/${root}/users`, UsersRouter);
+app.use(`/${root}/categories`, CategoriesRouter);
+app.use(`/${root}/recipes`, RecipesRouter);
+app.use(`/${root}/favorites`, FavoritesRouter);
+
