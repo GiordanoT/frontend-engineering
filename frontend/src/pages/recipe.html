@@ -36,5 +36,173 @@
 
         <!-- Navbar -->
         <section id='navbar'></section>
+
+        <!-- Recipes -->
+        <section class='hero'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-lg-3'>
+                        <div class='hero__categories'>
+                            <div class='hero__categories__all'>
+                                <i class='fa fa-bars'></i>
+                                <span>Categories</span>
+                            </div>
+                            <ul id='categories'></ul>
+                        </div>
+                    </div>
+                    <div class='col-lg-9'>
+                        <div class='hero__search'>
+                            <div class='hero__search__form'>
+                                <form method='get' action='./index.html'>
+                                    <input name='search' type='text' placeholder='What do you want to cook?'>
+                                    <button type='submit' class='site-btn'>SEARCH</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class='hero__item set-bg'>
+                            <!-- Cards -->
+                            <div class='container'>
+                                <div id='recipes' class='row featured__filter'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipe Section Begin -->
+        <section class="breadcrumb-section set-bg" style="background: lightseagreen;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="breadcrumb__text">
+                            <h2 style="color: black"> Name Recipe</h2>
+                            <a href="./index.html" style="color: black">Home</a>
+                            <span style="color: black">&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</span>
+                            <a href="./index.html" style="color: black">Category</a>
+                            <span style="color: black">&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</span>
+                            <span style="color: black">Name Recipe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Breadcrumb Section End -->
+
+        <!-- Product Details Section Begin -->
+        <section class="product-details spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product__details__pic">
+                            <div class="product__details__pic__item">
+                                <img class="product__details__pic__item--large"
+                                     src="../../static/img/product.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product__details__text">
+                            <section class="d-flex">
+                                <h3>Name Recipe</h3>
+                                <div class="header__top__right__auth ml-auto">
+                                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                                </div>
+                            </section>
+                            <h5>Author</h5>
+                            <h5>Date</h5>
+                            <!-- Ce le mettiamo le stelle con le recensioni?-->
+                            <!--<div class="product__details__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <span>(18 reviews)</span>
+                            </div>-->
+                            <ul>
+                                <li>
+                                    <p>Description of recipe.</p>
+                                </li>
+                            </ul>
+                            <div class="product__details__text">
+                                <p>For n peoples.</p>
+                                <p>Preparation: n minutes</p>
+                                <p>Cooking: n minutes</p>
+                                <p>Total time: n minutes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="product__details__tab">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                       aria-selected="true">Ingredients</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                       aria-selected="false">Procedure</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                       aria-selected="false">Advice</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                    <div class="product__details__tab__desc">
+                                        <h6>Ingredients</h6>
+                                        <li>Ingredient1</li>
+                                        <li>Ingredient2</li>
+                                        <li>Ingredient3</li>
+                                        <li>Ingredient4</li>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                    <div class="product__details__tab__desc">
+                                        <h6>Procedure</h6>
+                                        <p>Procedure</p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                    <div class="product__details__tab__desc">
+                                        <h6>Advice</h6>
+                                        <p>Advice</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Product Details Section End -->
+
+        <!-- Related Product Section Begin -->
+        <section class="related-product">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title related__product__title">
+                            <h2>Related Recipe</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="product__item">
+                            <div class="featured__item__pic set-bg" ="../../static/img/product.jpg">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="./recipe.html?recipe=1"><i class="fa fa-info"></i></a></li>
+                                    <li><a href="./recipe.html"><i class="fa fa-heart"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Related Product Section End -->
     </body>
 </html>
