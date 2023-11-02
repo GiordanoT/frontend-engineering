@@ -47,6 +47,28 @@ class RecipesController {
         }
     }
 
+    static getByCategory = async(req: Request, res: Response): Promise<Response> => {
+        try {
+            const {id} = req.params;
+            const elements = await Recipes.getByCategory(id);
+            return res.status(200).send(elements);
+        } catch(error) {
+            return res.status(400).send(error);
+        }
+    }
+
+    static getByName = async(req: Request, res: Response): Promise<Response> => {
+        try {
+            const {search} = req.body;
+            let elements = [];
+            if(!search) elements = await Recipes.getAll();
+            else elements = await Recipes.getByName(search);
+            return res.status(200).send(elements);
+        } catch(error) {
+            return res.status(400).send(error);
+        }
+    }
+
     static update = async(req: Request, res: Response): Promise<Response> => {
         try {
             const {id} = req.params;

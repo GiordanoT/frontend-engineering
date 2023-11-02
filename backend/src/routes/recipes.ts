@@ -3,13 +3,17 @@ import ExistenceMiddleware from '../middlewares/existence';
 import IdMiddleware from '../middlewares/id';
 import RecipesController from '../controllers/recipes';
 import AuthMiddleware from '../middlewares/auth';
-import PermissionsMiddleware from "../middlewares/permissions";
+import PermissionsMiddleware from '../middlewares/permissions';
 
 const router = Router();
 
 router
     .route('/mine')
     .get(AuthMiddleware.isAuthenticated, RecipesController.getByAuthor)
+
+router
+    .route('/search')
+    .post(RecipesController.getByName)
 
 router
     .route('/')
