@@ -24,9 +24,10 @@
 html,
 body {
 	height: 100%;
-	font-family: Lato, 'Helvetica Neue', Arial,Helvetica, sans-serif !important;
+	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+	background-color: whitesmoke;
 }
 
 h1,

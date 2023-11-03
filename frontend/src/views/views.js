@@ -11,7 +11,7 @@ export class Views {
     static favoriteRecipes = {name: 'Favorite Recipes', size: 99, url: './favoriteRecipes.html'};
     static login = {name: 'Login', url: './login.html'};
     static register = {name: 'Register', url: './register.html'};
-    static logout = {name: 'Logout', url: './logout.html'};
+    static logout = {name: 'Logout', url: 'javascript:;'};
     static navLinks = [this.home, this.addRecipe, this.myRecipes];
     static authLinks = [this.login, this.register, this.logout];
 
@@ -43,7 +43,7 @@ export class Views {
                                 </li>
                             </ul>
                             <div class='header__top__right__auth ml-auto'>
-                                <a href='${this.logout.url}'><i class='fa fa-user'></i>${this.logout.name}</a>
+                                <a id='logout-mobile' href='${this.logout.url}'><i class='fa fa-user'></i>${this.logout.name}</a>
                             </div>
                         </section>`}
                     </div>
@@ -72,7 +72,7 @@ export class Views {
                                         <a href='${this.register.url}'><i class='fa fa-user'></i>${this.register.name}</a>
                                     </div> 
                                 </section>` : `<div class='header__top__right__auth'>
-                                    <a href='${this.logout.url}'><i class='fa fa-user'></i>${this.logout.name}</a>
+                                    <a id='logout-desktop' href='${this.logout.url}'><i class='fa fa-user'></i>${this.logout.name}</a>
                                 </div>`}                             
                             </div>
                         </div>
@@ -122,7 +122,9 @@ export class Views {
                 <div class='featured__item__pic set-bg' style='background-image: url(${recipe.image});'>
                     <ul class='featured__item__pic__hover'>
                         <li><a href='${this.recipe.url}?recipe=${recipe._id}'><i class='fa fa-info'></i></a></li>
-                        <li><a id='${iconId}' href='${this.home.url}'><i class='fa fa-heart'></i></a></li>
+                        ${(U.isAuthenticated()) ? `<li>
+                            <a id='${iconId}' href='${this.home.url}'><i class='fa fa-heart'></i></a>
+                        </li>` : `<div></div>`}
                     </ul>
                 </div>
                 <div class='featured__item__text'>

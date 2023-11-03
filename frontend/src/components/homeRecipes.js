@@ -16,6 +16,6 @@ import {Views} from '../views/views.js';
         father.insertAdjacentHTML('beforeend', card);
         // Add to Favorite.
         const icon = document.querySelector(`#favorite-icon-${recipe._id}`);
-        icon.onclick = (e) => alert(recipe._id);
+        if(icon) icon.onclick = (e) => alert(recipe._id);
     }
 })();
