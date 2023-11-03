@@ -3,7 +3,11 @@
     <head>
         <meta charset='UTF-8'>
 
+
         <!-- CUSTOM JS -->
+        <script type='module' src='../components/navbar.js'></script>
+        <script type='module' src='../components/categories.js'></script>
+        <script type='module' src='../components/homeRecipes.js'></script>
 
         <!-- JQUERY -->
         <script defer src='../../modules/jquery/index.js'></script>
@@ -27,10 +31,51 @@
         <!-- CUSTOM -->
         <title>Recipe Blog | Login</title>
     </head>
-    <body>
+    <body style="background: lightseagreen;">
         <!-- Page Loader -->
         <div id='preloader'>
             <div class='loader'></div>
         </div>
+
+        <!-- Checkout Section Begin -->
+        <section class="checkout spad" style="background: lightseagreen;">
+            <div class="container">
+                <div class="checkout__form">
+                    <img class="product__details__pic__item--large ml-auto"
+                         src="../../static/img/logo.png" alt="Image">
+                    <h4>Login</h4>
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-6">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p style="text-shadow: 0 0 black;">Email<span>*</span></p>
+                                        <input type="text" placeholder="Put here your email" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p style="text-shadow: 0 0 black;">Password<span>*</span></p>
+                                        <input type="text" placeholder="Put here your password" />
+                                    </div>
+                                </div>
+                                <div class="row" style="justify-content: center; margin-right: 380px">
+                                    <button type="submit" class="site-btn" onclick="location.href='index.html'">LOGIN</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="checkout__order">
+                                    <h4>You don't have account?</h4>
+                                    <p>Create an account by entering the necessary information.
+                                        If you are a regular customer, login at the top of the page.</p>
+                                    <button type="submit" class="site-btn" onclick="location.href='register.html'">REGISTER</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Checkout Section End -->
     </body>
 </html>
