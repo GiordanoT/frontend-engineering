@@ -24,6 +24,7 @@
 html,
 body {
 	height: 100%;
+	max-width: 100%; overflow-x: hidden;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;

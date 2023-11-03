@@ -9,8 +9,9 @@ import {U} from '../common/u.js';
         const response = await Auth.logout();
         if(!response.error) {
             localStorage.setItem('user', '');
-            U.goHome();
+            U.goToHome();
         }
     };
-    logoutD.onclick = logout; logoutM.onclick = logout;
+    if(logoutD) logoutD.onclick = logout;
+    if(logoutM) logoutM.onclick = logout;
 })();

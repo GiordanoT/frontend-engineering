@@ -6,6 +6,6 @@ import {Views} from '../views/views.js';
     navbar.insertAdjacentHTML('beforeend', await Views.navbar());
     const logoutScript = document.createElement('script');
     logoutScript.type = 'module';
-    logoutScript.src = '../controller/logout.js'
+    logoutScript.src = '../controllers/logout.js'
     document.head.appendChild(logoutScript);
 }())

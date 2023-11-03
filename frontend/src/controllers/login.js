@@ -11,11 +11,11 @@ import {U} from '../common/u.js';
         const response = await Auth.login(email, password);
         if(response.error) {
             const error = document.querySelector('#login-error');
-            error.innerText = 'Bad Credentials.';
+            error.innerText = response.error;
         } else {
             delete response.authentication.password; delete response.error;
             localStorage.setItem('user', JSON.stringify(response));
-            U.goHome();
+            U.goToHome();
         }
     }
 })();

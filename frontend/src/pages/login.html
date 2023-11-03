@@ -3,11 +3,11 @@
     <head>
         <meta charset='UTF-8'>
 
+        <!-- Google Font -->
+        <link href='https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap' rel='stylesheet'>
 
         <!-- CUSTOM JS -->
-        <script type='module' src='../components/navbar.js'></script>
-        <script type='module' src='../components/categories.js'></script>
-        <script type='module' src='../components/homeRecipes.js'></script>
+        <script type='module' src='../controllers/login.js'></script>
 
         <!-- JQUERY -->
         <script defer src='../../modules/jquery/index.js'></script>
@@ -31,44 +31,42 @@
         <!-- CUSTOM -->
         <title>Recipe Blog | Login</title>
     </head>
-    <body style="background: lightseagreen;">
+    <body>
         <!-- Page Loader -->
         <div id='preloader'>
             <div class='loader'></div>
         </div>
 
-        <!-- Checkout Section Begin -->
-        <section class="checkout spad" style="background: lightseagreen;">
-            <div class="container">
-                <div class="checkout__form">
-                    <img class="product__details__pic__item--large ml-auto"
-                         src="../../static/img/logo.png" alt="Image">
-                    <h4>Login</h4>
-                    <form action="#">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-6">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p style="text-shadow: 0 0 black;">Email<span>*</span></p>
-                                        <input type="text" placeholder="Put here your email" />
-                                    </div>
+        <!-- Login Form -->
+        <section class='checkout'>
+            <div class='container'>
+                <div class='checkout__form'>
+                    <img class='product__details__pic__item--large ml-auto'
+                         src='../../static/img/logo.png' alt='Image'>
+                    <form id='login' method='POST' action=''>
+                        <div class='row'>
+                            <div class='col-lg-7 col-md-6 px-4'>
+                                <div class='checkout__input my-3'>
+                                    <b class='text-danger' id='login-error'></b>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p style="text-shadow: 0 0 black;">Password<span>*</span></p>
-                                        <input type="text" placeholder="Put here your password" />
-                                    </div>
+                                <div class='checkout__input'>
+                                    <p>Email<span>*</span></p>
+                                    <input id='login-email' type='email' name='email' placeholder='Your Email' required>
                                 </div>
-                                <div class="row" style="justify-content: center; margin-right: 380px">
-                                    <button type="submit" class="site-btn" onclick="location.href='index.html'">LOGIN</button>
+                                <div class='checkout__input'>
+                                    <p>Password<span>*</span></p>
+                                    <input id='login-password' type='password' name='password' placeholder='Your Password' required>
+                                </div>
+                                <div class='row'>
+                                    <button type='submit' class='w-100 site-btn mx-5'>LOGIN</button>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="checkout__order">
+                            <div class='col-lg-5 col-md-6 p-4'>
+                                <div class='checkout__order'>
                                     <h4>You don't have account?</h4>
                                     <p>Create an account by entering the necessary information.
                                         If you are a regular customer, login at the top of the page.</p>
-                                    <button type="submit" class="site-btn" onclick="location.href='register.html'">REGISTER</button>
+                                    <a type='submit' class='site-btn w-100 text-white text-center' href='./register.html'>REGISTER</a>
                                 </div>
                             </div>
                         </div>
@@ -76,6 +74,5 @@
                 </div>
             </div>
         </section>
-        <!-- Checkout Section End -->
     </body>
 </html>
