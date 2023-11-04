@@ -1,10 +1,6 @@
 'use strict';
 
 export class U {
-    static backendUrl() {
-        return 'http://localhost:5002/backend/';
-    }
-
     static goTo(path, queryParams) {
         let url = window.location.href.split('/');
         delete url[url.length - 1];
@@ -25,4 +21,6 @@ export class U {
         const user = localStorage.getItem('user');
         return !!user;
     }
+
+    static cardsForPage = 4 * 3;
 }

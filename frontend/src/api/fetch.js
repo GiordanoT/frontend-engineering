@@ -2,7 +2,7 @@
 import {U} from '../common/u.js'
 
 export class Fetch {
-    static url = U.backendUrl();
+    static url = 'http://localhost:5002/backend/';
     static credentials = 'include';
     static headers = {'Content-type': 'application/json; charset=UTF-8'};
 

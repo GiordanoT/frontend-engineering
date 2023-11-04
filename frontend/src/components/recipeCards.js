@@ -3,6 +3,7 @@ import {U} from '../common/u.js';
 import {Links} from '../common/links.js';
 import {UserApi} from '../api/users.js';
 import {RecipeApi} from '../api/recipes.js';
+import {PagerComponent} from './pager.js';
 
 export class RecipeCardsComponent {
     static async controller() {
@@ -26,6 +27,9 @@ export class RecipeCardsComponent {
                 recipes = await UserApi.getFavoriteRecipes(); break;
             default: break;
         }
+        window.localStorage.setItem('recipes', String(recipes.length));
+        const page = parseInt(window.localStorage.getItem('page')) || 0;
+        recipes = recipes.slice(page * U.cardsForPage, (page + 1) * U.cardsForPage);
         const father = document.querySelector('#recipes');
         for(let recipe of recipes) {
             const timestamp = Date.now();
@@ -95,4 +99,7 @@ export class RecipeCardsComponent {
     }
 }
 
-(async function() {await RecipeCardsComponent.controller();})();
+(async function() {
+    await RecipeCardsComponent.controller();
+    await PagerComponent.controller();
+})();

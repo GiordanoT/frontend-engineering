@@ -29,7 +29,9 @@ export class NavbarComponent {
                 <div class='hamburger__menu__overlay'></div>
                 <div class='hamburger__menu__wrapper'>
                     <div class='hamburger__menu__logo'>
-                        <a href='${Links.home.url}'><img src='${Links.logo.url}' alt='${Links.logo.name}'></a>
+                        <a onclick="window.localStorage.setItem('page', '0')" href='${Links.home.url}'>
+                            <img src='${Links.logo.url}' alt='${Links.logo.name}'>
+                        </a>
                     </div>
                     <div class='hamburger__menu__cart'>
                         ${(!isAuthenticated) ? `<section>
@@ -41,7 +43,7 @@ export class NavbarComponent {
                             </div>` : `<section class='d-flex'>
                             <ul>
                                 <li>
-                                    <a href='${Links.favoriteRecipes.url}'>
+                                    <a onclick="window.localStorage.setItem('page', '0')" href='${Links.favoriteRecipes.url}'>
                                         <i class='fa fa-heart'></i>
                                         <span id='favorites-length-mobile'></span>
                                     </a>
@@ -54,10 +56,10 @@ export class NavbarComponent {
                     </div>
                     <nav class='hamburger__menu__nav mobile-menu'>
                         <ul>
-                            <li><a href='${Links.home.url}'>${Links.home.name.toUpperCase()}</a></li>
+                            <li><a onclick="window.localStorage.setItem('page', '0')" href='${Links.home.url}'>${Links.home.name.toUpperCase()}</a></li>
                             ${(isAuthenticated) ? `<span>
-                                <li><a href='${Links.addRecipe.url}'>${Links.addRecipe.name.toUpperCase()}</a></li>
-                                <li><a href='${Links.myRecipes.url}'>${Links.myRecipes.name.toUpperCase()}</a></li>
+                                <li><a onclick="window.localStorage.setItem('page', '0')" href='${Links.addRecipe.url}'>${Links.addRecipe.name.toUpperCase()}</a></li>
+                                <li><a onclick="window.localStorage.setItem('page', '0')" href='${Links.myRecipes.url}'>${Links.myRecipes.name.toUpperCase()}</a></li>
                             </span>` : `<section></section>`}
                         </ul>
                     </nav>
@@ -89,16 +91,16 @@ export class NavbarComponent {
                     <div class='row'>
                         <div class='col-lg-3'>
                             <div class='header__logo'>
-                                <a href='${Links.home.url}'><img src='${Links.logo.url}' alt='${Links.logo.name}'></a>
+                                <a onclick="window.localStorage.setItem('page', '0')" href='${Links.home.url}'><img src='${Links.logo.url}' alt='${Links.logo.name}'></a>
                             </div>
                         </div>
                         <div class='col-lg-6'>
                             <nav class='header__menu'>
                                 <ul>          
-                                    <li><a href='${Links.home.url}'>${Links.home.name.toUpperCase()}</a></li>
+                                    <li><a onclick="window.localStorage.setItem('page', '0')" href='${Links.home.url}'>${Links.home.name.toUpperCase()}</a></li>
                                     ${(isAuthenticated) ? `<span>
-                                        <li><a href='${Links.addRecipe.url}'>${Links.addRecipe.name.toUpperCase()}</a></li>
-                                        <li><a href='${Links.myRecipes.url}'>${Links.myRecipes.name.toUpperCase()}</a></li>
+                                        <li><a onclick="window.localStorage.setItem('page', '0')" href='${Links.addRecipe.url}'>${Links.addRecipe.name.toUpperCase()}</a></li>
+                                        <li><a onclick="window.localStorage.setItem('page', '0')" href='${Links.myRecipes.url}'>${Links.myRecipes.name.toUpperCase()}</a></li>
                                     </span>` : `<section></section>`}
                                 </ul>
                             </nav>
@@ -107,7 +109,7 @@ export class NavbarComponent {
                             ${(isAuthenticated) ? `<div class='header__cart'>
                                 <ul>
                                     <li>
-                                        <a href='${Links.favoriteRecipes.url}'>
+                                        <a onclick="window.localStorage.setItem('page', '0')" href='${Links.favoriteRecipes.url}'>
                                             <i class='fa fa-heart'></i>
                                             <span id='favorites-length-desktop'></span>
                                         </a>

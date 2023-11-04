@@ -13,7 +13,7 @@ export class CategoriesComponent {
 
     static async view(category) {
         return `<li>
-            <a href='?category=${category._id}'>${category.name}</a>
+            <a onclick="window.localStorage.setItem('page', '0')" href='?category=${category._id}'>${category.name}</a>
         </li>`
     }
 }
