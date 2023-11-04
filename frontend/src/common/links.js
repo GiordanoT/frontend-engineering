@@ -10,6 +10,4 @@ export class Links {
     static login = {name: 'Login', url: './login.html'};
     static register = {name: 'Register', url: './register.html'};
     static logout = {name: 'Logout', url: 'javascript:;'};
-    static navLinks = [this.home, this.addRecipe, this.myRecipes];
-    static authLinks = [this.login, this.register, this.logout];
 }

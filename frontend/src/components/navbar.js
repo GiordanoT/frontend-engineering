@@ -10,7 +10,7 @@ export class NavbarComponent {
         navbar.insertAdjacentHTML('beforeend', view);
         const logoutScript = document.createElement('script');
         logoutScript.type = 'module';
-        logoutScript.src = '../controllers/logout.js'
+        logoutScript.src = '../components/logoutButton.js'
         document.head.appendChild(logoutScript);
         // Setting favorites size number on heart icon.
         if(!U.isAuthenticated()) return;
@@ -23,7 +23,6 @@ export class NavbarComponent {
 
     static async view() {
         const isAuthenticated = U.isAuthenticated();
-        const navLinks = (isAuthenticated) ? Links.navLinks : [Links.home];
         return `<section>
             <!-- Mobile -->
             <section>
@@ -55,9 +54,11 @@ export class NavbarComponent {
                     </div>
                     <nav class='hamburger__menu__nav mobile-menu'>
                         <ul>
-                            ${navLinks.map(navLink => `<li>
-                                <a href='${navLink.url}'>${navLink.name}</a>
-                            </li>`)}
+                            <li><a href='${Links.home.url}'>${Links.home.name.toUpperCase()}</a></li>
+                            ${(isAuthenticated) ? `<span>
+                                <li><a href='${Links.addRecipe.url}'>${Links.addRecipe.name.toUpperCase()}</a></li>
+                                <li><a href='${Links.myRecipes.url}'>${Links.myRecipes.name.toUpperCase()}</a></li>
+                            </span>` : `<section></section>`}
                         </ul>
                     </nav>
                     <div id='mobile-menu-wrap'></div>
@@ -93,10 +94,12 @@ export class NavbarComponent {
                         </div>
                         <div class='col-lg-6'>
                             <nav class='header__menu'>
-                                <ul>
-                                    ${navLinks.map(navLink => `<li>
-                                        <a href='${navLink.url}'>${navLink.name}</a>
-                                    </li>`)}
+                                <ul>          
+                                    <li><a href='${Links.home.url}'>${Links.home.name.toUpperCase()}</a></li>
+                                    ${(isAuthenticated) ? `<span>
+                                        <li><a href='${Links.addRecipe.url}'>${Links.addRecipe.name.toUpperCase()}</a></li>
+                                        <li><a href='${Links.myRecipes.url}'>${Links.myRecipes.name.toUpperCase()}</a></li>
+                                    </span>` : `<section></section>`}
                                 </ul>
                             </nav>
                         </div>
