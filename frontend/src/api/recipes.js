@@ -1,7 +1,7 @@
 'use strict';
 import {Fetch} from './fetch.js';
 
-export class Recipes {
+export class RecipeApi {
     static async create(name, category, duration, description, image, ingredients) {
         // todo: add duration on backend
         const body = JSON.stringify({name, category, duration, description, image, ingredients});
@@ -10,10 +10,22 @@ export class Recipes {
         return await response.text();
     }
 
+    static async update(recipe, name, category, duration, description, image, ingredients) {
+        const body = JSON.stringify({name, category, duration, description, image, ingredients});
+        const response = await Fetch.patch(`recipes/${recipe._id}`, body);
+        return await response.text();
+    }
+
     static async getAll() {
         const response = await Fetch.get('recipes');
         if(response.ok) return await response.json();
         return [];
+    }
+
+    static async getById(id) {
+        const response = await Fetch.get(`recipes/${id}`);
+        if(response.ok) return await response.json();
+        return null;
     }
 
     static async getByCategory(category) {
@@ -27,5 +39,10 @@ export class Recipes {
         const response = await Fetch.post(`recipes/search`, body);
         if(response.ok) return await response.json();
         return [];
+    }
+
+    static async delete(recipe) {
+        const response = await Fetch.delete(`recipes/${recipe._id}`);
+        return await response.text();
     }
 }

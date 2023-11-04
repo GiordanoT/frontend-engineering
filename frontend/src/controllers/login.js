@@ -1,5 +1,5 @@
 'use strict';
-import {Auth} from '../api/auth.js';
+import {AuthApi} from '../api/auth.js';
 import {U} from '../common/u.js';
 
 (async function() {
@@ -8,7 +8,7 @@ import {U} from '../common/u.js';
         e.preventDefault();
         const email = document.querySelector('#login-email').value;
         const password = document.querySelector('#login-password').value;
-        const response = await Auth.login(email, password);
+        const response = await AuthApi.login(email, password);
         if(response.error) {
             const error = document.querySelector('#login-error');
             error.innerText = response.error;

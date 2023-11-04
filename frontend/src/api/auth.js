@@ -1,7 +1,7 @@
 'use strict';
 import {Fetch} from './fetch.js';
 
-export class Auth {
+export class AuthApi {
 
     static async register(username, email, password) {
         const body = JSON.stringify({username, email, password});

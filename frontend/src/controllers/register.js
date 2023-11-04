@@ -1,5 +1,5 @@
 'use strict';
-import {Auth} from '../api/auth.js';
+import {AuthApi} from '../api/auth.js';
 import {U} from '../common/u.js';
 
 (async function() {
@@ -9,7 +9,7 @@ import {U} from '../common/u.js';
         const username = document.querySelector('#register-username').value;
         const email = document.querySelector('#register-email').value;
         const password = document.querySelector('#register-password').value;
-        const response = await Auth.register(username, email, password);
+        const response = await AuthApi.register(username, email, password);
         if(response.error) {
             const error = document.querySelector('#register-error');
             error.innerText = response.error;

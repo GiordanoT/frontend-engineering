@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+
+        <!-- CUSTOM JS -->
+        <script type='module' src='../components/navbar.js'></script>
+        <script type='module' src='../components/editRecipeForm.js'></script>
+
+        <!-- JQUERY -->
+        <script defer src='../../modules/jquery/index.js'></script>
+        <link rel='stylesheet' href='../../modules/jquery/slicknav/index.css' type='text/css'>
+        <script defer src='../../modules/jquery/slicknav/index.js'></script>
+        <link rel='stylesheet' href='../../modules/jquery/ui/index.css' type='text/css'>
+        <script defer src='../../modules/jquery/ui/index.js'></script>
+        <!-- BOOTSTRAP -->
+        <link rel='stylesheet' type='text/css' href='../../modules/bootstrap/index.css'>
+        <script defer src='../../modules/bootstrap/index.js'></script>
+        <!-- FONT AWESOME -->
+        <link rel='stylesheet' type='text/css' href='../../modules/font-awesome/index.css'>
+        <!-- ELEGANT ICONS -->
+        <link rel='stylesheet' type='text/css' href='../../modules/elegant-icons/index.css'>
+        <!-- TEMPLATE -->
+        <link rel='stylesheet' href='../../modules/template/index.css' type='text/css'>
+        <script defer src='../../modules/template/index.js'></script>
+
+        <!-- CUSTOM -->
+        <title>Recipe Blog | Add Recipe</title>
+    </head>
+    <body>
+        <!-- Page Loader -->
+        <div id='preloader'>
+            <div class='loader'></div>
+        </div>
+        <section id='navbar'></section>
+        <form class='container' id='edit-recipe' method='POST' action=''>
+            <input id='recipe-name' type='text' name='name' placeholder='Name' required />
+            <select id='recipe-category'>
+            </select>
+            <input id='recipe-duration' type='number' name='duration' placeholder='Duration' required />
+            <textarea id='recipe-description' type='text' name='description' required></textarea>
+            <input id='recipe-image' type='text' name='image' placeholder='Image url' required />
+            <button type='submit'>submit</button>
+            <hr />
+            <div id='recipe-ingredients'></div>
+            <button type='button' id='add-ingredient'>Add Ingredient</button>
+        </form>
+    </body>
+</html>

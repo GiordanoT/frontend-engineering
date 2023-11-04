@@ -17,6 +17,9 @@ export class U {
     static goTo400() {this.goTo('400');}
     static goTo404() {this.goTo('404');}
     static goToRecipe(recipe) {this.goTo('recipe', `id=${recipe._id}`);}
+    static goToEditRecipe(recipe) {this.goTo('editRecipe', `id=${recipe._id}`);}
+
+    static refresh() {location.reload();}
 
     static isAuthenticated() {
         const user = localStorage.getItem('user');
