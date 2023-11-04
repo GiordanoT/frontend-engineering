@@ -23,7 +23,7 @@ class FavoritesController {
             if(!(await Favorites.getByUserAndRecipe(user, recipe)))
                 return res.status(400).send('Recipe is not in favorites.');
             await Favorites.delete(user, recipe);
-            return res.status(200).send('Recipe deleted from favorites.');
+            return res.status(200).send('Recipe removed from favorites.');
         } catch(error) {
             return res.status(400).send(error);
         }

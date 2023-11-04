@@ -5,13 +5,13 @@ import U from '../common/u';
 class RecipesController {
     static create = async (req: Request, res: Response): Promise<Response> => {
         try {
-            const {name, category, ingredients, description, image} = req.body;
-            if (!name || !category || !ingredients || !description || !image)
+            const {name, category, ingredients, duration, description, image} = req.body;
+            if (!name || !category || !ingredients || !duration || !description || !image)
                 return res.status(400).send('Missing required parameters.');
             if(!U.isId(category) || !(await Categories.getById(category)))
                 return res.status(400).send('Invalid data.');
             const author = (await Users.getByToken(U.getToken(req))).id;
-            const element = await Recipes.create({name, author, category, ingredients, description, image});
+            const element = await Recipes.create({name, author, category, ingredients, duration, description, image});
             return res.status(200).send(element);
         } catch (error) {
             return res.status(400).send(error);
@@ -72,9 +72,9 @@ class RecipesController {
     static update = async(req: Request, res: Response): Promise<Response> => {
         try {
             const {id} = req.params;
-            const {name, category, ingredients, description, image} = req.body;
+            const {name, category, ingredients, duration, description, image} = req.body;
             if(category && !Categories.getById(category)) res.status(400).send('Invalid data.');
-            await Recipes.update(id, {name, category, ingredients, description, image});
+            await Recipes.update(id, {name, category, ingredients, duration, description, image});
             return res.status(200).send('Recipe updated.');
         } catch(error) {
             return res.status(400).send(error);
