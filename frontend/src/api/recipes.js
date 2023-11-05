@@ -1,33 +1,48 @@
 'use strict';
-import {U} from '../common/u.js';
+import {Fetch} from './fetch.js';
 
-export class Recipes {
-    static default = {_id: 'unknown', name: 'unknown', author: 'unknown', category: 'unknown',
-        ingredients: 'unknown', description: 'unknown', image: 'unknown'};
+export class RecipeApi {
+    static async create(name, category, duration, description, image, ingredients) {
+        // todo: add duration on backend
+        const body = JSON.stringify({name, category, duration, description, image, ingredients});
+        const response = await Fetch.post('recipes', body);
+        if(response.ok) return await response.json();
+        return await response.text();
+    }
+
+    static async update(recipe, name, category, duration, description, image, ingredients) {
+        const body = JSON.stringify({name, category, duration, description, image, ingredients});
+        const response = await Fetch.patch(`recipes/${recipe._id}`, body);
+        return await response.text();
+    }
 
     static async getAll() {
-        try {
-            const method = 'GET';
-            const recipes = await fetch(`${U.backendUrl()}/recipes`, {method});
-            return await recipes.json();
-        } catch (e) {return [];}
-
+        const response = await Fetch.get('recipes');
+        if(response.ok) return await response.json();
+        return [];
     }
+
+    static async getById(id) {
+        const response = await Fetch.get(`recipes/${id}`);
+        if(response.ok) return await response.json();
+        return null;
+    }
+
     static async getByCategory(category) {
-        try {
-            const method = 'GET';
-            const recipes = await fetch(`${U.backendUrl()}/categories/${category}/recipes`, {method});
-            return await recipes.json();
-        } catch (e) {return this.default;}
-
+        const response = await Fetch.get(`categories/${category}/recipes`);
+        if(response.ok) return await response.json();
+        return [];
     }
+
     static async getByName(name) {
-        try {
-            const method = 'POST';
-            const headers = {'Content-type': 'application/json; charset=UTF-8'};
-            const body = JSON.stringify({search: name});
-            const recipes = await fetch(`${U.backendUrl()}/recipes/search`, {method, headers, body});
-            return await recipes.json();
-        } catch (e) {return [];}
+        const body = JSON.stringify({search: name});
+        const response = await Fetch.post(`recipes/search`, body);
+        if(response.ok) return await response.json();
+        return [];
+    }
+
+    static async delete(recipe) {
+        const response = await Fetch.delete(`recipes/${recipe._id}`);
+        return await response.text();
     }
 }

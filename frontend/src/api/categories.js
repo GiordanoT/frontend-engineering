@@ -1,14 +1,17 @@
 'use strict';
-import {U} from '../common/u.js';
+import {Fetch} from './fetch.js';
 
-export class Categories {
-    static default = {_id: 'unknown', name: 'unknown'}
+export class CategoryApi {
 
     static async getAll() {
-        try {
-            const categories = await fetch(`${U.backendUrl()}/categories`, {method: 'GET'});
-            return await categories.json();
-        } catch(e) {return [];}
+        const response = await Fetch.get('categories');
+        if(response.ok) return await response.json();
+        return [];
+    }
 
+    static async getById(id) {
+        const response = await Fetch.get(`categories/${id}`);
+        if(response.ok) return await response.json();
+        return null;
     }
 }

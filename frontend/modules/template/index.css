@@ -24,6 +24,7 @@
 html,
 body {
 	height: 100%;
+	max-width: 100%; overflow-x: hidden;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
@@ -557,6 +558,10 @@ ol {
 
 .hero.hero-normal {
 	padding-bottom: 30px;
+}
+
+.hero__categories {
+	background-color: white;
 }
 
 .hero.hero-normal .hero__categories {
@@ -2969,7 +2974,6 @@ ol {
 		width: 35px;
 		line-height: 33px;
 		text-align: center;
-		border: 1px solid #1c1c1c;
 		cursor: pointer;
 		position: absolute;
 		right: 15px;

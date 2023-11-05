@@ -3,13 +3,15 @@
     <head>
         <meta charset='UTF-8'>
 
+        <!-- Google Font -->
+        <link href='https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap' rel='stylesheet'>
+
         <!-- CUSTOM JS -->
         <script type='module' src='../components/navbar.js'></script>
+        <script type='module' src='../components/addRecipeForm.js'></script>
 
         <!-- JQUERY -->
         <script defer src='../../modules/jquery/index.js'></script>
-        <link rel='stylesheet' href='../../modules/jquery/nice-select/index.css' type='text/css'>
-        <script defer src='../../modules/jquery/nice-select/index.js'></script>
         <link rel='stylesheet' href='../../modules/jquery/slicknav/index.css' type='text/css'>
         <script defer src='../../modules/jquery/slicknav/index.js'></script>
         <link rel='stylesheet' href='../../modules/jquery/ui/index.css' type='text/css'>
@@ -33,9 +35,18 @@
         <div id='preloader'>
             <div class='loader'></div>
         </div>
-
-        <!-- Navbar -->
         <section id='navbar'></section>
-
+        <form class='container' id='add-recipe' method='POST' action=''>
+            <input id='recipe-name' type='text' name='name' placeholder='Name' required />
+            <select id='recipe-category'>
+            </select>
+            <input id='recipe-duration' type='number' name='duration' placeholder='Duration' required />
+            <textarea id='recipe-description' type='text' name='description' required></textarea>
+            <input id='recipe-image' type='text' name='image' placeholder='Image url' required />
+            <button type='submit'>submit</button>
+            <hr />
+            <div id='recipe-ingredients'></div>
+            <button type='button' id='add-ingredient'>Add Ingredient</button>
+        </form>
     </body>
 </html>

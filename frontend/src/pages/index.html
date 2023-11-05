@@ -3,15 +3,16 @@
     <head>
         <meta charset='UTF-8'>
 
+        <!-- Google Font -->
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap'>
+
         <!-- CUSTOM JS -->
         <script type='module' src='../components/navbar.js'></script>
         <script type='module' src='../components/categories.js'></script>
-        <script type='module' src='../components/homeRecipes.js'></script>
+        <script type='module' src='../components/recipeCards.js'></script>
 
         <!-- JQUERY -->
         <script defer src='../../modules/jquery/index.js'></script>
-        <link rel='stylesheet' href='../../modules/jquery/nice-select/index.css' type='text/css'>
-        <script defer src='../../modules/jquery/nice-select/index.js'></script>
         <link rel='stylesheet' href='../../modules/jquery/slicknav/index.css' type='text/css'>
         <script defer src='../../modules/jquery/slicknav/index.js'></script>
         <link rel='stylesheet' href='../../modules/jquery/ui/index.css' type='text/css'>
@@ -54,17 +55,21 @@
                     <div class='col-lg-9'>
                         <div class='hero__search'>
                             <div class='hero__search__form'>
-                                <form method='get' action='./index.html'>
+                                <form class='bg-white' method='get' action='./index.html'>
                                     <input name='search' type='text' placeholder='What do you want to cook?'>
-                                    <button type='submit' class='site-btn'>SEARCH</button>
+                                    <button type='submit' onclick="window.localStorage.setItem('page', '0')" class='site-btn'>SEARCH</button>
                                 </form>
                             </div>
                         </div>
                         <div class='hero__item set-bg'>
-                            <!-- Cards -->
+                            <!-- Card -->
                             <div class='container'>
                                 <div id='recipes' class='row featured__filter'></div>
                             </div>
+                        </div>
+                        <div class='product__pagination d-flex'>
+                            <a id='previous-page' class='mr-auto' href='#'><i class='fa fa-long-arrow-left'></i></a>
+                            <a id='next-page' class='ml-auto' href='#'><i class='fa fa-long-arrow-right'></i></a>
                         </div>
                     </div>
                 </div>

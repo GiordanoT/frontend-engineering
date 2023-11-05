@@ -1,29 +1,25 @@
 'use strict';
-import {U} from '../common/u.js';
+import {Fetch} from './fetch.js';
 
-export class Auth {
+export class AuthApi {
+
+    static async register(username, email, password) {
+        const body = JSON.stringify({username, email, password});
+        const response = await Fetch.post('auth/register', body);
+        if(response.ok) return {...(await response.json()), error: ''};
+        else return {error: await response.text()};
+    }
 
     static async login(email, password) {
-        try {
-            const method = 'POST';
-            const credentials = 'include';
-            const headers = {'Content-type': 'application/json; charset=UTF-8'};
-            const body = JSON.stringify({email, password});
-            const response = await fetch(`${U.backendUrl()}/auth/login`, {method, credentials, headers, body});
-            const login = await response.json();
-            if(response.status === 200) return {...login, error: false};
-            else return {error: true};
-        } catch (e) {return {error: true} }
+        const body = JSON.stringify({email, password});
+        const response = await Fetch.post('auth/login', body);
+        if(response.ok) return {...(await response.json()), error: ''};
+        else return {error: await response.text()};
     }
 
     static async logout() {
-        try {
-            const method = 'GET';
-            const credentials = 'include';
-            const response = await fetch(`${U.backendUrl()}/auth/logout`, {method, credentials});
-            console.log(response)
-            if(response.status === 200) return {error: false};
-            else return {error: true};
-        } catch (e) {return {error: true} }
+        const response = await Fetch.get('auth/logout');
+        if(response.ok) return {error: ''};
+        else return {error: await response.text()};
     }
 }
