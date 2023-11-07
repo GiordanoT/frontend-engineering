@@ -2,6 +2,8 @@
 import {U} from '../common/u.js';
 import {RecipeApi} from '../api/recipes.js';
 import {CategoryApi} from '../api/categories.js';
+import {UserApi} from "../api/users";
+import {Links} from "../common/links";
 
 export class RecipeComponent {
     static async controller() {
@@ -25,7 +27,8 @@ export class RecipeComponent {
         ingredients.innerText = JSON.stringify(recipe.ingredients);
     }
 
-    static async view() {}
+    static async view(recipe, timestamp) {
+    }
 }
 
 (async function() {await RecipeComponent.controller();})();
