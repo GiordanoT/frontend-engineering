@@ -20,7 +20,6 @@ export class RegisterForm {
                 U.goToHome();
             }
         }
-        window.localStorage.setItem('page', '0');
     }
 
     static async view() {}

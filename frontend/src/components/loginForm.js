@@ -18,7 +18,6 @@ export class LoginForm {
                 localStorage.setItem('user', JSON.stringify(response));
                 U.goToHome();
             }
-            window.localStorage.setItem('page', '0');
         }
     }
 

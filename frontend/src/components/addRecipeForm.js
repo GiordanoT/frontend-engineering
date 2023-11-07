@@ -10,8 +10,7 @@ export class AddRecipeFormComponent {
         await this.addRecipeHandler();
     }
 
-    static async view() {
-    }
+    static async view() {}
 
     /* Private Functions */
 
@@ -31,9 +30,9 @@ export class AddRecipeFormComponent {
         const addButton = document.querySelector('#add-ingredient');
         addButton.onclick = (e) => {
             const timestamp = Date.now();
-            const input = `<div id='container-ingredient-${timestamp}'>
+            const input = `<div class='d-flex p-1' id='container-ingredient-${timestamp}'>
                 <input id='recipe-ingredient-${timestamp}' class='recipe-ingredients' type='text' placeholder='Ingredient' required/>
-                <button id='remove-ingredient-${timestamp}'>Remove</button>
+                <button class='ml-auto site-btn bg-danger' id='remove-ingredient-${timestamp}'>Remove</button>
             </div>`;
             ingredients.insertAdjacentHTML('beforeend', input);
             const removeButton = document.querySelector(`#remove-ingredient-${timestamp}`);

@@ -9,6 +9,7 @@
         <!-- CUSTOM JS -->
         <script type='module' src='../components/navbar.js'></script>
         <script type='module' src='../components/categories.js'></script>
+        <script type='module' src='../components/searchRecipe.js'></script>
         <script type='module' src='../components/recipeCards.js'></script>
 
         <!-- JQUERY -->
@@ -55,9 +56,9 @@
                     <div class='col-lg-9'>
                         <div class='hero__search'>
                             <div class='hero__search__form'>
-                                <form class='bg-white' method='get' action='./index.html'>
-                                    <input name='search' type='text' placeholder='What do you want to cook?'>
-                                    <button type='submit' onclick="window.localStorage.setItem('page', '0')" class='site-btn'>SEARCH</button>
+                                <form id='search-recipe' class='bg-white' method='GET' action=''>
+                                    <input id='search-recipe-value' name='search' type='text' placeholder='What do you want to cook?'>
+                                    <button type='submit' class='site-btn'>SEARCH</button>
                                 </form>
                             </div>
                         </div>

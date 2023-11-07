@@ -13,7 +13,6 @@ export class LogoutButton {
         };
         if(logoutD) logoutD.onclick = logout;
         if(logoutM) logoutM.onclick = logout;
-        window.localStorage.setItem('page', '0');
     }
 
     static async view() {}

@@ -3,21 +3,25 @@ import {U} from '../common/u.js';
 
 export class PagerComponent {
     static async controller() {
-        const page = parseInt(window.localStorage.getItem('page')) || 0;
+        const url = new URL(location.href);
+        let page = parseInt(url.searchParams.get('page')) || 0; page = (page < 0) ? 0 : page;
         const recipes = parseInt(window.localStorage.getItem('recipes')) || 0;
         const previous = document.getElementById('previous-page');
         const next = document.getElementById('next-page');
         if(page <= 0) previous.className = 'd-none';
         const neededPages = parseFloat(String(recipes / U.cardsForPage));
         if((page + 1) >= neededPages) next.className = 'd-none';
-        console.log(parseInt(String(recipes / U.cardsForPage)))
+
+        const category = url.searchParams.get('category');
+        const search = url.searchParams.get('search');
+
         previous.onclick = (e) => {
-            window.localStorage.setItem('page', String(page - 1 ));
-            U.refresh();
+            const query = U.buildQuery(page - 1, category, search);
+            U.goTo(U.getCurrentPage(), query);
         }
         next.onclick = (e) => {
-            window.localStorage.setItem('page', String(page + 1 ));
-            U.refresh();
+            const query = U.buildQuery(page + 1, category, search);
+            U.goTo(U.getCurrentPage(), query);
         }
     }
 

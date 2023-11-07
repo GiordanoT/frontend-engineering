@@ -24,9 +24,9 @@ export class EditRecipeFormComponent {
         image.value = recipe.image;
         for(let ingredient of recipe.ingredients) {
             const timestamp = Date.now();
-            const input = `<div id='container-ingredient-${timestamp}'>
-                <input value='${ingredient}' id='recipe-ingredient-${timestamp}' class='recipe-ingredients' type='text' placeholder='Ingredient' required/>
-                <button type='button' id='remove-ingredient-${timestamp}'>Remove</button>
+            const input = `<div class='d-flex p-1' id='container-ingredient-${timestamp}'>
+                <input class='recipe-ingredients' value='${ingredient}' id='recipe-ingredient-${timestamp}' class='recipe-ingredients' type='text' placeholder='Ingredient' required/>
+                <button class='ml-auto site-btn bg-danger' type='button' id='remove-ingredient-${timestamp}'>Remove</button>
             </div>`;
             ingredients.insertAdjacentHTML('beforeend', input);
             const removeButton = document.querySelector(`#remove-ingredient-${timestamp}`);

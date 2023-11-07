@@ -35,18 +35,55 @@
         <div id='preloader'>
             <div class='loader'></div>
         </div>
+
+        <!-- Navbar -->
         <section id='navbar'></section>
-        <form class='container' id='edit-recipe' method='POST' action=''>
-            <input id='recipe-name' type='text' name='name' placeholder='Name' required />
-            <select id='recipe-category'>
-            </select>
-            <input id='recipe-duration' type='number' name='duration' placeholder='Duration' required />
-            <textarea id='recipe-description' type='text' name='description' required></textarea>
-            <input id='recipe-image' type='text' name='image' placeholder='Image url' required />
-            <button type='submit'>submit</button>
-            <hr />
-            <div id='recipe-ingredients'></div>
-            <button type='button' id='add-ingredient'>Add Ingredient</button>
-        </form>
+
+        <!-- Edit Recipe Form -->
+        <section class='checkout pt-0'>
+            <div class='container'>
+                <div class='checkout__form'>
+                    <form id='edit-recipe' method='POST' action=''>
+                        <div class='row'>
+                            <div class='col-lg-7 col-md-6 px-4'>
+                                <div class='checkout__input my-3'>
+                                    <b class='text-danger' id='login-error'></b>
+                                </div>
+                                <div class='checkout__input'>
+                                    <p>Name<span>*</span></p>
+                                    <input id='recipe-name' type='text' name='name' placeholder='Name' required />
+                                </div>
+                                <div class='checkout__input'>
+                                    <p>Category<span>*</span></p>
+                                    <select id='recipe-category'></select>
+                                </div>
+                                <div class='checkout__input'>
+                                    <p>Duration (in minutes)<span>*</span></p>
+                                    <input id='recipe-duration' type='number' name='duration' placeholder='Duration' required />
+                                </div>
+                                <div class='checkout__input'>
+                                    <p>Image URL<span>*</span></p>
+                                    <input id='recipe-image' type='text' name='image' placeholder='Image url' required />
+                                </div>
+                                <div class='checkout__input'>
+                                    <p>Description<span>*</span></p>
+                                    <textarea id='recipe-description' type='text' name='description' required></textarea>
+                                </div>
+                                <div class='checkout__input'>
+                                    <div class='d-flex'>
+                                        <p class='my-auto'>Ingredients<span>*</span></p>
+                                        <button type='button' id='add-ingredient' class='my-2 ml-auto site-btn'>Add Ingredient</button>
+                                    </div>
+                                    <div id='recipe-ingredients'></div>
+                                </div>
+                                <div class='row'>
+                                    <button type='submit' class='w-100 site-btn mx-5'>EDIT RECIPE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

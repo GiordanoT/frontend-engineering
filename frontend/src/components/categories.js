@@ -1,5 +1,6 @@
 'use strict';
 import {CategoryApi} from '../api/categories.js';
+import {U} from '../common/u.js';
 
 export class CategoriesComponent {
     static async controller() {
@@ -12,8 +13,12 @@ export class CategoriesComponent {
     }
 
     static async view(category) {
+        const url = new URL(location.href);
+        const page = url.searchParams.get('page');
+        const search = url.searchParams.get('search');
+        const query = U.buildQuery(page, category._id, search);
         return `<li>
-            <a onclick="window.localStorage.setItem('page', '0')" href='?category=${category._id}'>${category.name}</a>
+            <a href='${query}'>${category.name}</a>
         </li>`
     }
 }

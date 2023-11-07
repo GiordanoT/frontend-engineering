@@ -1,11 +1,19 @@
 'use strict';
 
 export class U {
+    static getCurrentPage() {
+        let path = location.href.split('/');
+        return path[path.length - 1].split('.')[0];
+    }
+
     static goTo(path, queryParams) {
         let url = window.location.href.split('/');
         delete url[url.length - 1];
         url = `${url.join('/')}${path}.html`;
-        url = (queryParams) ? `${url}?${queryParams}` : url;
+        if(queryParams) {
+            queryParams = (queryParams.startsWith('?') ? queryParams : '?' + queryParams);
+            url = url + queryParams;
+        }
         window.location.replace(url);
     }
 
@@ -22,5 +30,13 @@ export class U {
         return !!user;
     }
 
-    static cardsForPage = 4 * 3;
+    static buildQuery(page, category, search) {
+        let query = '?';
+        if(page) query = `${query}page=${page}&`;
+        if(category) query = `${query}category=${category}&`;
+        if(search) query = `${query}search=${search}&`;
+        return query;
+    }
+
+    static cardsForPage = 4 * 1;
 }

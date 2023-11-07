@@ -8,18 +8,19 @@ import {PagerComponent} from './pager.js';
 export class RecipeCardsComponent {
     static async controller() {
         // Extracting the page's name from the url (ex. index, addRecipe, ...).
-        let path = location.href.split('/'); path = path[path.length - 1].split('.')[0];
+        let path = U.getCurrentPage();
         // Extracting query parameters.
         const url = new URL(location.href);
         const category = url.searchParams.get('category');
         const search = url.searchParams.get('search');
+        let page = parseInt(url.searchParams.get('page')) || 0; page = (page < 0) ? 0 : page;
         // Building recipes.
         let recipes = [];
         switch(path) {
             case 'index':
-                if(category !== null) recipes = await RecipeApi.getByCategory(category);
-                else if(search !== null) recipes = await RecipeApi.getByName(search);
-                else recipes = await RecipeApi.getAll();
+                recipes = await RecipeApi.getAll();
+                if(category !== null) recipes = recipes.filter(recipe => recipe.category === category);
+                if(search !== null) recipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(search.toLowerCase()));
                 break;
             case 'myRecipes':
                 recipes = await UserApi.getMyRecipes(); break;
@@ -27,8 +28,8 @@ export class RecipeCardsComponent {
                 recipes = await UserApi.getFavoriteRecipes(); break;
             default: break;
         }
+        // Communicating the number of pages needed for the PagerComponent through the localStorage.
         window.localStorage.setItem('recipes', String(recipes.length));
-        const page = parseInt(window.localStorage.getItem('page')) || 0;
         recipes = recipes.slice(page * U.cardsForPage, (page + 1) * U.cardsForPage);
         const father = document.querySelector('#recipes');
         for(let recipe of recipes) {
