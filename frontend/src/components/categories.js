@@ -5,7 +5,7 @@ import {U} from '../common/u.js';
 export class CategoriesComponent {
     static async controller() {
         const categories = await CategoryApi.getAll();
-        const father = document.querySelector('#categories');
+        const father = document.getElementById('categories');
         for(let category of categories) {
             const view = await this.view(category);
             father.insertAdjacentHTML('beforeend', view);

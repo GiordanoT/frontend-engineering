@@ -4,6 +4,7 @@ import {Links} from '../common/links.js';
 import {UserApi} from '../api/users.js';
 import {RecipeApi} from '../api/recipes.js';
 import {PagerComponent} from './pager.js';
+import {CategoryApi} from '../api/categories.js';
 
 export class RecipeCardsComponent {
     static async controller() {
@@ -19,8 +20,38 @@ export class RecipeCardsComponent {
         switch(path) {
             case 'index':
                 recipes = await RecipeApi.getAll();
-                if(category !== null) recipes = recipes.filter(recipe => recipe.category === category);
-                if(search !== null) recipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(search.toLowerCase()));
+                if(category !== null) {
+                    recipes = recipes.filter(recipe => recipe.category === category);
+                    const container = document.getElementById('container-filter-category');
+                    container.className = 'd-block';
+                    const filter = document.getElementById('filter-category');
+                    const categoryName = await CategoryApi.getById(category);
+                    filter.innerText = categoryName.name;
+                    const removeFilter = document.getElementById('remove-category-filter');
+                    removeFilter.onclick = (e) => {
+                        const url = new URL(location.href);
+                        const page = url.searchParams.get('page');
+                        const search = url.searchParams.get('search');
+                        const query = U.buildQuery(page, undefined, search);
+                        U.goTo('index', query);
+                    }
+                }
+                if(search !== null) {
+                    recipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(search.toLowerCase()));
+                    const container = document.getElementById('container-filter-name');
+                    container.className = 'd-block';
+                    const filter = document.getElementById('filter-name');
+                    filter.innerText = search;
+                    const removeFilter = document.getElementById('remove-name-filter');
+                    removeFilter.onclick = (e) => {
+                        const url = new URL(location.href);
+                        const page = url.searchParams.get('page');
+                        const category = url.searchParams.get('category');
+                        const query = U.buildQuery(page, category, undefined);
+                        U.goTo('index', query);
+                    }
+                }
+
                 break;
             case 'myRecipes':
                 recipes = await UserApi.getMyRecipes(); break;
@@ -31,7 +62,7 @@ export class RecipeCardsComponent {
         // Communicating the number of pages needed for the PagerComponent through the localStorage.
         window.localStorage.setItem('recipes', String(recipes.length));
         recipes = recipes.slice(page * U.cardsForPage, (page + 1) * U.cardsForPage);
-        const father = document.querySelector('#recipes');
+        const father = document.getElementById('recipes');
         for(let recipe of recipes) {
             const timestamp = Date.now();
             const card = await this.view(recipe, timestamp);
@@ -62,8 +93,8 @@ export class RecipeCardsComponent {
 
     static async buildIcons(path, recipe, timestamp) {
         if(!U.isAuthenticated()) return;
-        const containerId = `#icons-${timestamp}`;
-        const container = document.querySelector(containerId);
+        const containerId = `icons-${timestamp}`;
+        const container = document.getElementById(containerId);
         let icons = [];
         switch (path) {
             case 'index':

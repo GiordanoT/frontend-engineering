@@ -6,7 +6,7 @@ import {UserApi} from '../api/users.js';
 export class NavbarComponent {
     static async controller() {
         const view = await this.view();
-        const navbar = document.querySelector('#navbar');
+        const navbar = document.getElementById('navbar');
         navbar.insertAdjacentHTML('beforeend', view);
         const logoutScript = document.createElement('script');
         logoutScript.type = 'module';
@@ -15,8 +15,8 @@ export class NavbarComponent {
         // Setting favorites size number on heart icon.
         if(!U.isAuthenticated()) return;
         const favoritesLength = await UserApi.getFavoritesLength();
-        const favoritesM = document.querySelector('#favorites-length-mobile');
-        const favoritesD = document.querySelector('#favorites-length-desktop');
+        const favoritesM = document.getElementById('favorites-length-mobile');
+        const favoritesD = document.getElementById('favorites-length-desktop');
         if(favoritesM) favoritesM.innerText = favoritesLength;
         if(favoritesD) favoritesD.innerText = favoritesLength;
     }

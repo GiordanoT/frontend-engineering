@@ -4,15 +4,15 @@ import {U} from '../common/u.js';
 
 export class RegisterForm {
     static async controller() {
-        const form = document.querySelector('#register');
+        const form = document.getElementById('register');
         form.onsubmit = async(e) => {
             e.preventDefault();
-            const username = document.querySelector('#register-username').value;
-            const email = document.querySelector('#register-email').value;
-            const password = document.querySelector('#register-password').value;
+            const username = document.getElementById('register-username').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
             const response = await AuthApi.register(username, email, password);
             if(response.error) {
-                const error = document.querySelector('#register-error');
+                const error = document.getElementById('register-error');
                 error.innerText = response.error;
             } else {
                 delete response.error;

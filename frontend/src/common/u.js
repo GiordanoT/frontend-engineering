@@ -38,5 +38,5 @@ export class U {
         return query;
     }
 
-    static cardsForPage = 4 * 1;
+    static cardsForPage = 4 * 3;
 }

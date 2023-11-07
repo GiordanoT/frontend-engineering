@@ -4,14 +4,14 @@ import {U} from '../common/u.js';
 
 export class LoginForm {
     static async controller() {
-        const form = document.querySelector('#login');
+        const form = document.getElementById('login');
         form.onsubmit = async(e) => {
             e.preventDefault();
-            const email = document.querySelector('#login-email').value;
-            const password = document.querySelector('#login-password').value;
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
             const response = await AuthApi.login(email, password);
             if(response.error) {
-                const error = document.querySelector('#login-error');
+                const error = document.getElementById('login-error');
                 error.innerText = response.error;
             } else {
                 delete response.authentication.password; delete response.error;

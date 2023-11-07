@@ -4,8 +4,8 @@ import {U} from '../common/u.js';
 
 export class LogoutButton {
     static async controller() {
-        const logoutD = document.querySelector('#logout-desktop');
-        const logoutM = document.querySelector('#logout-mobile');
+        const logoutD = document.getElementById('logout-desktop');
+        const logoutM = document.getElementById('logout-mobile');
         const logout = async(e) => {
             await AuthApi.logout();
             localStorage.setItem('user', '');
