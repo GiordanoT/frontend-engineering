@@ -2,6 +2,7 @@
 import {Fetch} from './fetch.js';
 import {RecipeApi} from './recipes.js';
 
+/* Users endpoints handler */
 export class UserApi {
 
     static async getById(id) {

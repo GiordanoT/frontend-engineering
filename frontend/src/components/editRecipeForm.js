@@ -5,11 +5,16 @@ import {CategoryApi} from '../api/categories.js';
 
 export class EditRecipeFormComponent {
     static async controller() {
+        /* Retrieving categories */
         await this.categoriesHandler();
+        /* Ingredients handler (add and remove) */
         await this.ingredientsHandler();
         // Extracting query parameters.
         const url = new URL(location.href);
-        const id = url.searchParams.get('id'); if(!id) U.goTo404();
+        const id = url.searchParams.get('id');
+        /* Checking if the recipe exist */
+        if(!id) U.goTo404();
+        /* Getting data from recipe and populate the form */
         const recipe = await RecipeApi.getById(id); if(!recipe) U.goTo404();
         const name = document.getElementById('recipe-name');
         const category = document.getElementById('recipe-category');
@@ -23,7 +28,7 @@ export class EditRecipeFormComponent {
         description.value = recipe.description;
         image.value = recipe.image;
         for(let ingredient of recipe.ingredients) {
-            const timestamp = Date.now();
+            const timestamp = Date.now() + Math.random();
             const input = `<div class='d-flex p-1' id='container-ingredient-${timestamp}'>
                 <input class='recipe-ingredients' value='${ingredient}' id='recipe-ingredient-${timestamp}' class='recipe-ingredients' type='text' placeholder='Ingredient' required/>
                 <button class='ml-auto site-btn bg-danger' type='button' id='remove-ingredient-${timestamp}'>Remove</button>
@@ -35,6 +40,7 @@ export class EditRecipeFormComponent {
                 containerRecipeIngredient.remove();
             }
         }
+        /* Edit recipe */
         await this.editRecipeHandler(recipe);
     }
 

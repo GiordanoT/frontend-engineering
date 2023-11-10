@@ -1,5 +1,6 @@
 'use strict';
 
+/* Utility class (contains some useful functions) */
 export class U {
     static getCurrentPage() {
         let path = location.href.split('/');
@@ -38,5 +39,6 @@ export class U {
         return query;
     }
 
+    /* Number of recipes shown in pages */
     static cardsForPage = 4 * 3;
 }

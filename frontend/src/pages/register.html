@@ -26,54 +26,53 @@
         <link rel='stylesheet' href='../../modules/template/index.css' type='text/css'>
         <script defer src='../../modules/template/index.js'></script>
 
-        <!-- CUSTOM -->
         <title>Recipe Blog | Register</title>
     </head>
     <body>
-    <!-- Page Loader -->
-    <div id='preloader'>
-        <div class='loader'></div>
-    </div>
-
-    <!-- Checkout Section Begin -->
-    <section class='checkout'>
-        <div class='container'>
-            <div class='checkout__form'>
-                <img class='product__details__pic__item--large ml-auto'
-                     src='../../static/img/logo.png' alt='Image'>
-                <form id='register' method='POST' action=''>
-                    <div class='row'>
-                        <div class='col-lg-7 col-md-6 px-4'>
-                            <div class='checkout__input my-3'>
-                                <b class='text-danger' id='register-error'></b>
-                            </div>
-                            <div class='checkout__input'>
-                                <p>Username<span>*</span></p>
-                                <input id='register-username' type='text' name='username' placeholder='Your Username' required>
-                            </div>
-                            <div class='checkout__input'>
-                                <p>Email<span>*</span></p>
-                                <input id='register-email' type='email' name='email' placeholder='Your Email' required>
-                            </div>
-                            <div class='checkout__input'>
-                                <p>Password<span>*</span></p>
-                                <input id='register-password' type='password' name='password' placeholder='Your Password' required>
-                            </div>
-                            <div class='row'>
-                                <button type='submit' class='w-100 site-btn mx-5'>REGISTER</button>
-                            </div>
-                        </div>
-                        <div class='col-lg-5 col-md-6 p-4'>
-                            <div class='checkout__order'>
-                                <h4>You have an account?</h4>
-                                <p>Do you already have an account? Click the button below and access your profile.</p>
-                                <a type='submit' class='site-btn w-100 text-white text-center' href='./login.html'>LOGIN</a>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <!-- Page Loader -->
+        <div id='preloader'>
+            <div class='loader'></div>
         </div>
-    </section>
+
+        <!-- Register -->
+        <section class='checkout'>
+            <div class='container'>
+                <div class='checkout__form'>
+                    <img class='product__details__pic__item--large ml-auto'
+                         src='../../static/img/logo.png' alt='Image'>
+                    <form id='register' method='POST' action=''>
+                        <div class='row'>
+                            <div class='col-lg-7 col-md-6 px-4'>
+                                <div class='checkout__input my-3'>
+                                    <b class='text-danger' id='register-error'></b>
+                                </div>
+                                <div class='checkout__input'>
+                                    <p>Username<span>*</span></p>
+                                    <input id='register-username' type='text' name='username' placeholder='Your Username' required>
+                                </div>
+                                <div class='checkout__input'>
+                                    <p>Email<span>*</span></p>
+                                    <input id='register-email' type='email' name='email' placeholder='Your Email' required>
+                                </div>
+                                <div class='checkout__input'>
+                                    <p>Password<span>*</span></p>
+                                    <input id='register-password' type='password' name='password' placeholder='Your Password' required>
+                                </div>
+                                <div class='row'>
+                                    <button type='submit' class='w-100 site-btn mx-5'>REGISTER</button>
+                                </div>
+                            </div>
+                            <div class='col-lg-5 col-md-6 p-4'>
+                                <div class='checkout__order'>
+                                    <h4>You have an account?</h4>
+                                    <p>Do you already have an account? Click the button below and access your profile.</p>
+                                    <a type='submit' class='site-btn w-100 text-white text-center' href='./login.html'>LOGIN</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

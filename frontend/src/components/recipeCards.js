@@ -15,11 +15,13 @@ export class RecipeCardsComponent {
         const category = url.searchParams.get('category');
         const search = url.searchParams.get('search');
         let page = parseInt(url.searchParams.get('page')) || 0; page = (page < 0) ? 0 : page;
-        // Building recipes.
+        // Building recipes depending on the page (index, myRecipes and favoriteRecipes).
         let recipes = [];
         switch(path) {
             case 'index':
+                /* Retrieving all the recipes */
                 recipes = await RecipeApi.getAll();
+                /* If there is a category -> filter by the specified category */
                 if(category !== null) {
                     recipes = recipes.filter(recipe => recipe.category === category);
                     const container = document.getElementById('container-filter-category');
@@ -36,6 +38,7 @@ export class RecipeCardsComponent {
                         U.goTo('index', query);
                     }
                 }
+                /* If there is a searched name -> filter by the searched name */
                 if(search !== null) {
                     recipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(search.toLowerCase()));
                     const container = document.getElementById('container-filter-name');
@@ -54,13 +57,16 @@ export class RecipeCardsComponent {
 
                 break;
             case 'myRecipes':
+                /* Retrieving user's recipes */
                 recipes = await UserApi.getMyRecipes(); break;
             case 'favoriteRecipes':
+                /* Retrieving user's favorite recipes */
                 recipes = await UserApi.getFavoriteRecipes(); break;
             default: break;
         }
         // Communicating the number of pages needed for the PagerComponent through the localStorage.
         window.localStorage.setItem('recipes', String(recipes.length));
+        /* Filtering recipes by pages */
         recipes = recipes.slice(page * U.cardsForPage, (page + 1) * U.cardsForPage);
         const father = document.getElementById('recipes');
         for(let recipe of recipes) {
@@ -91,6 +97,8 @@ export class RecipeCardsComponent {
 
     /* PRIVATE FUNCTIONS */
 
+    /* Building the recipe's icons depending on the page (index -> info, heart; myRecipes -> info, edit, trash;
+    favoriteRecipes -> info, remove) */
     static async buildIcons(path, recipe, timestamp) {
         if(!U.isAuthenticated()) return;
         const containerId = `icons-${timestamp}`;

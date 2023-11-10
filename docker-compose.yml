@@ -28,7 +28,7 @@ services:
     build: ./frontend
     container_name: frontend
     restart: always
-    links:
+    depends_on:
       - backend
     ports:
       - '5001:80'
@@ -37,7 +37,7 @@ services:
     build: ./backend
     container_name: backend
     restart: always
-    links:
+    depends_on:
       - mongo
     ports:
       - '5002:5002'

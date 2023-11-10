@@ -4,6 +4,7 @@ import {U} from '../common/u.js';
 
 export class LogoutButton {
     static async controller() {
+        /* Logout handler */
         const logoutD = document.getElementById('logout-desktop');
         const logoutM = document.getElementById('logout-mobile');
         const logout = async(e) => {

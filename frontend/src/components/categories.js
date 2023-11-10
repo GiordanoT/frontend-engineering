@@ -4,6 +4,7 @@ import {U} from '../common/u.js';
 
 export class CategoriesComponent {
     static async controller() {
+        /* Retrieving categories and building menu */
         const categories = await CategoryApi.getAll();
         const father = document.getElementById('categories');
         for(let category of categories) {
@@ -13,6 +14,7 @@ export class CategoriesComponent {
     }
 
     static async view(category) {
+        /* Setting the category query parameter in order to filter recipes */
         const url = new URL(location.href);
         const page = url.searchParams.get('page');
         const search = url.searchParams.get('search');

@@ -4,6 +4,7 @@ import {U} from '../common/u.js';
 
 export class RegisterForm {
     static async controller() {
+        /* Retrieving user data and register */
         const form = document.getElementById('register');
         form.onsubmit = async(e) => {
             e.preventDefault();

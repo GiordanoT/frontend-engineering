@@ -5,8 +5,11 @@ import {U} from '../common/u.js';
 
 export class AddRecipeFormComponent {
     static async controller() {
+        /* Retrieving categories */
         await this.categoriesHandler();
+        /* Ingredients handler (add and remove) */
         await this.ingredientsHandler();
+        /* Add recipe */
         await this.addRecipeHandler();
     }
 

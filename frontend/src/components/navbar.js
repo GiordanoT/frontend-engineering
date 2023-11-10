@@ -5,6 +5,7 @@ import {UserApi} from '../api/users.js';
 
 export class NavbarComponent {
     static async controller() {
+        /* Building the navbar component */
         const view = await this.view();
         const navbar = document.getElementById('navbar');
         navbar.insertAdjacentHTML('beforeend', view);
@@ -23,6 +24,7 @@ export class NavbarComponent {
 
     static async view() {
         const isAuthenticated = U.isAuthenticated();
+        /* Building the html code navbar (managing both authenticated and not) */
         return `<section>
             <!-- Mobile -->
             <section>

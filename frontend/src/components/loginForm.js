@@ -4,6 +4,7 @@ import {U} from '../common/u.js';
 
 export class LoginForm {
     static async controller() {
+        /* Retrieving user data and login */
         const form = document.getElementById('login');
         form.onsubmit = async(e) => {
             e.preventDefault();

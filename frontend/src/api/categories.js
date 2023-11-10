@@ -1,6 +1,7 @@
 'use strict';
 import {Fetch} from './fetch.js';
 
+/* Categories endpoints handler */
 export class CategoryApi {
 
     static async getAll() {

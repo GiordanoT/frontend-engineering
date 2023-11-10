@@ -3,6 +3,7 @@ import {U} from '../common/u.js';
 
 export class SearchRecipeComponent {
     static async controller() {
+        /* Setting the search query parameter in order to filter recipes */
         const form = document.getElementById('search-recipe');
         form.onsubmit = (e) => {
             e.preventDefault();

@@ -3,6 +3,7 @@ import {U} from '../common/u.js';
 
 export class PagerComponent {
     static async controller() {
+        /* Managing pages using query parameter */
         const url = new URL(location.href);
         let page = parseInt(url.searchParams.get('page')) || 0; page = (page < 0) ? 0 : page;
         const recipes = parseInt(window.localStorage.getItem('recipes')) || 0;

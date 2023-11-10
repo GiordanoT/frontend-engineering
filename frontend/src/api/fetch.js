@@ -1,6 +1,7 @@
 'use strict';
 import {U} from '../common/u.js'
 
+/* Fetch wrapper */
 export class Fetch {
     static url = 'http://localhost:5002/backend/';
     static credentials = 'include';

@@ -1,9 +1,9 @@
 'use strict';
 import {Fetch} from './fetch.js';
 
+/* Recipes endpoints handler */
 export class RecipeApi {
     static async create(name, category, duration, description, image, ingredients) {
-        // todo: add duration on backend
         const body = JSON.stringify({name, category, duration, description, image, ingredients});
         const response = await Fetch.post('recipes', body);
         if(response.ok) return await response.json();

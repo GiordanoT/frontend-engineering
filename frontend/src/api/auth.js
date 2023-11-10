@@ -1,6 +1,7 @@
 'use strict';
 import {Fetch} from './fetch.js';
 
+/* Authentication endpoints handler */
 export class AuthApi {
 
     static async register(username, email, password) {

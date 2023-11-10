@@ -12,14 +12,16 @@ export class RecipeComponent {
         const recipe = await RecipeApi.getById(id); if(!recipe) U.goTo404();
         // Querying the DOM.
         const name = document.getElementById('recipe-name');
+        const author = document.getElementById('recipe-author');
         const category = document.getElementById('recipe-category');
         const duration = document.getElementById('recipe-duration');
         const description = document.getElementById('recipe-description');
         const image = document.getElementById('recipe-image');
         const ingredients = document.getElementById('recipe-ingredients');
-        // Setting data.
+        // Setting recipe data.
         name.innerText = recipe.name;
-        category.innerText = (await CategoryApi.getById(recipe.category))?.name;
+        author.innerText = 'Author: ' + (await UserApi.getById(recipe.author))?.username;
+        category.innerText = 'Category: ' + (await CategoryApi.getById(recipe.category))?.name;
         duration.innerText = recipe.duration;
         description.innerText = recipe.description;
         image.src = recipe.image;

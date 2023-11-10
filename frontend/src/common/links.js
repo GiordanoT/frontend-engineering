@@ -1,5 +1,6 @@
 'use strict';
 
+/* Links wrapper */
 export class Links {
     static logo = {name: 'Logo', url: '../../static/img/logo.png'};
     static home = {name: 'Home', url: './index.html'};
